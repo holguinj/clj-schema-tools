@@ -10,8 +10,8 @@
   :url "http://github.com/puppetlabs/clj-schema-tools"
   :pedantic? :abort
 
-  :dependencies [[org.clojure/clojure "1.6.0"]
-                 [prismatic/schema "0.2.6"]]
+  :dependencies [[org.clojure/clojure "1.8.0"]
+                 [prismatic/schema "1.0.5"]]
 
   :deploy-repositories [["releases" ~(deploy-info "http://nexus.delivery.puppetlabs.net/content/repositories/releases/")]
                         ["snapshots" ~(deploy-info "http://nexus.delivery.puppetlabs.net/content/repositories/snapshots/")]]

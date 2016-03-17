@@ -28,6 +28,14 @@
       (recur explained)
       explained)))
 
+(def better-schema-names
+  {'Str 'String
+   'Bool 'Boolean
+   'Num 'Number
+   'Int 'Integer
+   'Inst 'Date
+   'Uuid 'UUID})
+
 (defn- ->client-explanation
   "Transforms a schema explanation into one that makes more sense to a
   javascript client by removing any java.lang. prefixes and changing any
@@ -41,8 +49,13 @@
         strip-sym-prefix (fn [x]
                            (let [xstr (str x)]
                              (cond
+                               ;; if we have a prepared translation
+                               (contains? better-schema-names x) (get better-schema-names x)
+                               ;; if it's not a class
                                (not (symbol? x)) x
+                               ;; if it's not in java.lang
                                (not (re-find #"^java\.lang\." xstr)) x
+                               ;; if it is in java.lang
                                :else (symbol (string/replace xstr "java.lang." "")))))
         var->string (fn [x]
                       (if (var? x)
