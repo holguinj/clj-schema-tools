@@ -11,6 +11,7 @@
   :pedantic? :abort
 
   :dependencies [[org.clojure/clojure "1.8.0"]
+                 [cheshire "5.5.0"]
                  [prismatic/schema "1.0.5"]]
 
   :deploy-repositories [["releases" ~(deploy-info "http://nexus.delivery.puppetlabs.net/content/repositories/releases/")]
